@@ -1,6 +1,6 @@
 ESTACIONAMENTO PRIVADO
 
-STATUS DO PROJETO: Em desenvolvimento.
+STATUS DO PROJETO: Finalizado.
 
 TECNOLOGIAS APLICADAS: Linguagem de Programação: JAVA Banco de Dados: MYSQL Controle de versão: GIT Repositório: GIT HUB
 
