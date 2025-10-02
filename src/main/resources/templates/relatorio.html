@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Relatório - Private Parking</title>
+
+        <!-- Bootstrap CSS (usando o caminho do Thymeleaf) -->
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+        <!-- CSS personalizado (usando o caminho do Thymeleaf) -->
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+
+        <!-- ================== CABEÇALHO (REUTILIZÁVEL) ================== -->
+        <div th:replace="~{navbar :: navbar}"></div>
+
+        <!-- ================== CONTEÚDO PRINCIPAL ================== -->
+        <main class="flex-grow-1 container-fluid d-flex flex-column align-items-center justify-content-start">
+
+            <!-- Texto de instrução para o usuário -->
+            <p class="welcome-text text-center lead mb-4" style="margin-top: 20px;">
+                Filtre por data e visualize o faturamento de seu estacionamento!
+            </p>
+
+            <!-- ======== CARD DE FILTRO DO RELATÓRIO ======== -->
+            <div class="card card-relatorio shadow-lg p-3"> <!-- Adicionado padding p-3 para espaçamento interno -->
+                <form id="filtroRelatorioForm">
+                    <div class="row">
+                        <!-- Campo Data Inicial -->
+                        <div class="col-md-6 mb-2">
+                            <label for="dataInicial" class="form-label">Data Inicial:</label>
+                            <input type="date" id="dataInicial" name="dataInicial" class="form-control" required />
+                        </div>
+                        <!-- Campo Data Final -->
+                        <div class="col-md-6 mb-2">
+                            <label for="dataFinal" class="form-label">Data Final:</label>
+                            <input type="date" id="dataFinal" name="dataFinal" class="form-control" required />
+                        </div>
+                    </div>
+
+                    <!-- Botões de ação -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <!-- Botão para a nova tela de faturamento -->
+                        <a th:href="@{/faturamento}" class="btn btn-info">Ver Faturamento Mensal</a>
+
+                        <!-- Volta ao menu principal -->
+                        <a th:href="@{/menu}" class="btn btn-secondary">Voltar</a>
+
+                        <!-- Confirma o filtro para gerar relatório -->
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                    </div>
+
+                    <!-- ======== TABELA DE RELATÓRIO ======== -->
+                    <div class="table-responsive mt-4 w-100" style="max-width: 1000px;">
+                        <table class="table table-bordered table-striped" id="tabelaRelatorio">
+                            <thead class="table-dark text-center">
+                                <tr>
+                                    <!-- Cabeçalho das colunas do relatório -->
+                                    <th>Nome</th>
+                                    <th>CPF</th>
+                                    <th>E-mail</th>
+                                    <th>Veículo</th>
+                                    <th>Placa</th>
+                                    <th>Data Entrada</th>
+                                    <th>Data Saída</th>
+                                    <th>Valor Total</th>
+                                    <th>Ação</th> <!-- <<< NOVA COLUNA -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Linhas serão preenchidas dinamicamente via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    </main>
+
+                    <!-- ================== RODAPÉ (REUTILIZÁVEL) ================== -->
+                    <div th:replace="~{footer :: footer}"></div>
+
+                    <!-- ================== SCRIPTS ================== -->
+                    <!-- JS do Bootstrap -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+                    <!-- JS personalizado (usando o caminho do Thymeleaf) -->
+                    <script th:src="@{/js/relatorio.js}"></script>
+                    </body>
+
+                    </html>

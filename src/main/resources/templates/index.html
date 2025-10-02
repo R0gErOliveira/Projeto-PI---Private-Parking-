@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Página Inicial - Private Parking</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+
+        <!-- Arquivo CSS personalizado -->
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+        <!-- Navbar -->
+        <div th:replace="navbar :: navbar"></div>
+
+        <!-- Conteúdo principal -->
+       <main class="flex-grow-1 container-fluid d-flex flex-column align-items-center justify-content-start">
+            <!-- Texto de boas-vindas com a altura ajustada -->
+            <p class="welcome-text text-center lead mb-4" style="margin-top: 20px;">
+                Bem-Vindo! Acesse o sistema para gerenciar veículos e clientes com agilidade!
+            </p>
+       
+        <!-- Card de Login -->
+        <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%">
+
+            <!-- Este bloco só será exibido se a URL contiver o parâmetro "error" -->
+            <div th:if="${param.error}" class="alert alert-danger mb-3" role="alert">
+                Usuário ou senha inválidos. Por favor, tente novamente.
+            </div>
+
+            <form th:action="@{/login}" method="post">
+
+                <!-- Campo Usuário -->
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuário:</label>
+                    <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Digite seu usuário"
+                           required />
+                </div>
+
+                <!-- Campo Senha -->
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Login:</label>
+                    <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite sua senha"
+                           required />
+                </div>
+
+                <!-- Botões -->
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <a href="#" class="text-decoration-none text-warning text-center" data-bs-toggle="modal"
+                       data-bs-target="#modalEsqueciSenha">
+                        Esqueci a Senha
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <div th:replace="footer :: footer"></div>
+
+
+    <!-- Modal Esqueci a Senha -->
+    <div class="modal fade" id="modalEsqueciSenha" tabindex="-1" aria-labelledby="modalEsqueciSenhaLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEsqueciSenhaLabel">Redefinir Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formRedefinirSenha">
+                        <div class="mb-3">
+                            <label for="nomeUsuario" class="form-label">Nome de Usuário</label>
+                            <input type="text" class="form-control" id="nomeUsuario"
+                                   placeholder="Digite seu nome de usuário" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="novaSenha" class="form-label">Nova Senha</label>
+                            <input type="password" class="form-control" id="novaSenha" placeholder="Digite a nova senha"
+                                   required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Redefinir Senha</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/auth.js}"></script>
+
+
+</body>
+
+</html>

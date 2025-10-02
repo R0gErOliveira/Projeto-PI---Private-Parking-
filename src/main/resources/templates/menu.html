@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu Principal - Private Parking</title>
+
+    <!-- Bootstrap CSS (usando o caminho do Thymeleaf) -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+    <!-- Arquivo CSS personalizado (usando o caminho do Thymeleaf) -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    
+    <!-- Incluindo a Navbar a partir de um fragmento -->
+    <div th:replace="~{navbar :: navbar}"></div>
+
+    <!-- Conteúdo principal -->
+ <main class="flex-grow-1 container-fluid d-flex flex-column align-items-center justify-content-start">
+        <!-- Texto de boas-vindas -->
+       <p class="welcome-text text-center lead mb-4" style="margin-top: 20px;">
+            Menu Principal - Acesse Cadastros, Pedidos e Relatórios com facilidade!
+        </p>
+
+        <!-- Card de opções -->
+        <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%">
+            <h5 class="text-center mb-4 fw-bold">Escolha a opção desejada:</h5>
+            <div class="d-grid gap-3">
+                <!-- Links corrigidos para apontar para as ROTAS do controller -->
+                <a th:href="@{/cadastroCliente}" class="btn btn-outline-primary btn-lg">Cadastro de Cliente</a>
+                <a th:href="@{/pedido}" class="btn btn-outline-success btn-lg">Pedido</a>
+                <a th:href="@{/relatorio}" class="btn btn-outline-info btn-lg">Relatório</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Incluindo o Rodapé a partir de um fragmento -->
+    <div th:replace="~{footer :: footer}"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Arquivo JS personalizado (usando o caminho do Thymeleaf) -->
+    <script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>
